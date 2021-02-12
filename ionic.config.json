@@ -1,0 +1,7 @@
+{
+  "name": "socialise-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
