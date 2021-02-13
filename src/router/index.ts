@@ -1,32 +1,73 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '../views/Tabs.vue'
+import { auth } from '../main'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    redirect: '/tabs/tab1'
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/Login.vue')
   },
   {
-    path: '/tabs/',
+    name: 'register',
+    path: '/register',
+    component: () => import('@/views/Register.vue')
+  },
+  {
+    path: '/',
     component: Tabs,
     children: [
       {
         path: '',
-        redirect: '/tabs/tab1'
+        redirect: 'stories',
+        meta: { requiresAuth: true }
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
+        name: 'stories',
+        path: 'stories',
+        component: () => import('@/views/Stories.vue'),
+        props: true,
+        meta: { requiresAuth: true }
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2.vue')
+        name: 'groups',
+        path: 'groups',
+        component: () => import('@/views/Groups.vue'),
+        meta: { requiresAuth: true }
       },
       {
-        path: 'tab3',
-        component: () => import('@/views/Tab3.vue')
-      }
+        name: 'add',
+        path: 'add',
+        component: () => import('@/views/Add.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        name: 'chat',
+        path: 'chat',
+        component: () => import('@/views/Chat.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        name: 'messages',
+        path: 'messages',
+        component: () => import('@/views/Messages.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        name: 'account',
+        path: 'account',
+        component: () => import('@/views/Account.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        name: 'story',
+        path: 'story',
+        component: () => import('@/views/Story.vue'),
+        props: true,
+        meta: { requiresAuth: true }
+      },
     ]
   }
 ]
@@ -34,6 +75,16 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+
+  if (requiresAuth && !auth.currentUser) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

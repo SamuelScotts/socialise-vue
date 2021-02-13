@@ -1,39 +1,62 @@
 <template>
   <ion-page>
     <ion-tabs>
+      
       <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="tab1" href="/tabs/tab1">
-          <ion-icon :icon="triangle" />
-          <ion-label>Tab 1</ion-label>
-        </ion-tab-button>
+
+        <ion-button size="large" color="black" @click="$router.push('/stories')">
+          <ion-icon :icon="home" />
+        </ion-button>
           
-        <ion-tab-button tab="tab2" href="/tabs/tab2">
-          <ion-icon :icon="ellipse" />
-          <ion-label>Tab 2</ion-label>
-        </ion-tab-button>
+        <ion-button size="large" color="black" @click="$router.push('/groups')">
+          <ion-icon :icon="people" />
+        </ion-button>
         
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
-          <ion-icon :icon="square" />
-          <ion-label>Tab 3</ion-label>
-        </ion-tab-button>
+        <ion-button size="large" color="black" @click="$router.push('/add')">
+          <ion-icon :icon="add" />
+        </ion-button>
+
+        <ion-button size="large" color="black" @click="$router.push('/chat')">
+          <ion-icon :icon="chatbox" />
+        </ion-button>
+
+        <ion-button size="large" color="black" @click="$router.push('/messages')">
+          <ion-icon :icon="mail" />
+        </ion-button>
+
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { IonTabBar, IonButton, IonTabs, IonIcon, IonPage } from '@ionic/vue';
+import { home, people, add, chatbox, mail } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
+  components: { IonTabs, IonTabBar, IonButton, IonIcon, IonPage },
   setup() {
     return {
-      ellipse, 
-      square, 
-      triangle,
+      home,
+      people,
+      add,
+      chatbox,
+      mail
     }
   }
 }
 </script>
+
+<style scoped>
+ion-icon {
+  color: #FFFFFF;
+}
+ion-button{
+  --box-shadow:none;
+}
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+</style>

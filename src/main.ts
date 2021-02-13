@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-
+import firebase from 'firebase'
 import { IonicVue } from '@ionic/vue';
 
 /* Core CSS required for Ionic components to work properly */
@@ -25,8 +25,22 @@ import './theme/variables.css';
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
   
 router.isReady().then(() => {
   app.mount('#app');
 });
+
+const firebaseConfig = {
+  apiKey: "BLANK FOR A REASON",
+  authDomain: "BLANK FOR A REASON",
+  projectId: "BLANK FOR A REASON",
+  storageBucket: "BLANK FOR A REASON",
+  messagingSenderId: "BLANK FOR A REASON",
+  appId: "BLANK FOR A REASON"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+export const db = firebase.firestore();
+export const auth = firebase.auth();
