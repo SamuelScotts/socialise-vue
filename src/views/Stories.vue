@@ -12,7 +12,7 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-        <ion-card v-for="story in stories" :key="story" @click="$router.push({name:'story', params: {title: story.title, subtitle: story.subtitle, faculty: story.faculty, content: story.content}})">
+        <ion-card v-for="story in stories" :key="story" @click="$router.push({name:'story', params: {id: story.id, title: story.title, subtitle: story.subtitle, faculty: story.faculty, content: story.content}})">
         <ion-card-header>
           <ion-card-subtitle>{{ story.faculty }}</ion-card-subtitle>
           <ion-card-title>{{ story.title }}</ion-card-title>
@@ -48,8 +48,9 @@ export default  {
   mounted(){
     db.collection("stories").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          this.stories.push(doc.data())
+        const stories = doc.data()
+        stories.id = doc.id
+        this.stories.push(stories);
       });
     })
   }

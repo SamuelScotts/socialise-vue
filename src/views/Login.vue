@@ -18,21 +18,21 @@
             <ion-item-divider style="width: 100%; text-align: center;"></ion-item-divider>
             <h1 class="ion-text-center" style="font-size: 50px; color: black; margin-top: -2px">Socialise</h1>
             
-            <ion-input v-model="username" class="box" color="light" placeholder="Email" clearInput="true"></ion-input>
+            <ion-input type="text" v-model="username" class="box" color="light" placeholder="Email" clearInput="true"></ion-input>
             <p class="ion-text-end" style="color: black;">Forgot your username?</p>
             
             <ion-input type="password" v-model="password" class="box" color="light" placeholder="Password" clearInput="true"></ion-input>
             <p class="ion-text-end" style="color: black;">Forgot your password?</p>
             
             <ion-button @click="userLogin()" class="button" expand="block">Login</ion-button>
-            <p class="ion-text-center" style="color: black;">Don't have an account? Register here!</p>
+            <p class="ion-text-center" style="color: black;">Don't have an account? <router-link to="/register">Register here!</router-link></p>
 
         </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
 IonItemDivider, IonInput } from '@ionic/vue';
 //import { chevronBack } from 'ionicons/icons';
@@ -54,9 +54,6 @@ export default  {
     }
   }, 
   methods: {
-    navigateBack() {
-      router.go(-1);    
-    },
     userLogin() {
         firebase
         .auth()
