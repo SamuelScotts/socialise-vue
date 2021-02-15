@@ -14,7 +14,7 @@
     <ion-content :fullscreen="true">
         <ion-card v-for="story in stories" :key="story" @click="$router.push({name:'story', params: {id: story.id, title: story.title, subtitle: story.subtitle, faculty: story.faculty, content: story.content}})">
         <ion-card-header>
-          <ion-card-subtitle>{{ story.faculty }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ story.faculty }} - {{ story.user}}</ion-card-subtitle>
           <ion-card-title>{{ story.title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -45,7 +45,8 @@ export default  {
       person,
     }
   },
-  mounted(){
+  ionViewDidEnter(){
+    this.stories = []
     db.collection("stories").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const stories = doc.data()

@@ -49,7 +49,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIco
 IonInput, IonSelect, IonLabel, IonItem, IonTextarea } from '@ionic/vue';
 import { closeOutline, checkmarkOutline } from 'ionicons/icons';
 //import router from '../router/index';
-//import firebase from "firebase";
+import firebase from "firebase";
 import { db } from '../main'
 
 export default  {
@@ -62,6 +62,7 @@ export default  {
     title: '',
     subtitle: '',
     content:'',
+    currentUser: null,
   }),
   setup() {
     return {
@@ -77,14 +78,22 @@ export default  {
       subtitle: this.subtitle,
       content: this.content,
       likes: 0,
-      })
-      .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
+      user: this.currentUser,
       })
       .catch((error) => {
           console.error("Error adding document: ", error);
       });
     }
+  },
+  ionViewDidEnter(){
+    const user = firebase.auth().currentUser;
+    const docRef = db.collection("users").doc(user.uid);
+      docRef.get().then((doc) => {
+        const username = doc.data();
+        this.currentUser = username.username;
+      }).catch((error) => {
+          console.log("Error getting document:", error);
+      });
   },
 }
 </script>

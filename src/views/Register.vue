@@ -75,15 +75,15 @@ export default  {
   }, 
   methods: {
     userSignup(){
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                db.collection("users").doc(user).set({
-                    username: this.username,
-                    faculty: this.faculty,
-                })
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            db.collection("users").doc(user.uid).set({
+                username: this.username,
+                faculty: this.faculty,
             })
+            this.$router.push('/stories')
+          })
     },
     checkPassLength(){
         if (this.password.length < 6){

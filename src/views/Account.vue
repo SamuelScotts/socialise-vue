@@ -16,7 +16,7 @@
       <ion-grid style="margin-top: 20px;">
         <ion-row>
           <ion-col size="4"><ion-icon id="avatar" :icon="personOutline"></ion-icon></ion-col>
-          <ion-col><h1 style="font-size: 50px;">Username</h1></ion-col>
+          <ion-col><h1 style="font-size: 50px;">{{ currentUser }}</h1></ion-col>
         </ion-row>
         <ion-row>
           <ion-col><ion-button style="font-size: 20px;" @click="logout()" expand="block">Logout</ion-button></ion-col>
@@ -32,6 +32,7 @@ IonCol, IonRow } from '@ionic/vue';
 import { chevronBack, personOutline } from 'ionicons/icons';
 import router from '../router/index';
 import firebase from "firebase";
+import { db } from '../main';
 
 export default  {
   name: 'account',
@@ -39,6 +40,7 @@ export default  {
   IonCol, IonRow },
   data: () => ({
     pageName: 'Account',
+    currentUser: null,
   }),
   setup() {
     return {
@@ -55,6 +57,16 @@ export default  {
       })
     },
   },
+  ionViewDidEnter(){
+    const user = firebase.auth().currentUser;
+    const docRef = db.collection("users").doc(user.uid);
+      docRef.get().then((doc) => {
+        const username = doc.data();
+        this.currentUser = username.username;
+      }).catch((error) => {
+          console.log("Error getting document:", error);
+      });
+  },
 }
 </script>
 
@@ -68,6 +80,8 @@ ion-content{
 ion-button{
   --box-shadow:none;
   --background: black;
+  --background-activated: black;
+  --background-focused: #642A5A;
 }
 #avatar{
   font-size: 96px;

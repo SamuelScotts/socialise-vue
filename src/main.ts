@@ -32,12 +32,12 @@ router.isReady().then(() => {
 });
 
 const firebaseConfig = {
-  apiKey: "LEFT BLANK",
-  authDomain: "LEFT BLANK",
-  projectId: "LEFT BLANK",
-  storageBucket: "LEFT BLANK",
-  messagingSenderId: "LEFT BLANK",
-  appId: "LEFT BLANK"
+  apiKey: "BLANK INTENTIONALLY",
+  authDomain: "BLANK INTENTIONALLY",
+  projectId: "BLANK INTENTIONALLY",
+  storageBucket: "BLANK INTENTIONALLY",
+  messagingSenderId: "BLANK INTENTIONALLY",
+  appId: "BLANK INTENTIONALLY"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

@@ -11,22 +11,36 @@
         </ion-button>
       </ion-toolbar>
     </ion-header>
+    
     <ion-content>
-      
+      <ion-card id="comment" v-for="faculty in faculties" :key="faculty">
+        <ion-card-header>
+          <ion-card-title>
+            {{faculty}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Get the latest information from the {{faculty}} department.
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCard,
+IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/vue';
 import { chevronBack } from 'ionicons/icons';
 import router from '../router/index';
 
 export default  {
   name: 'groups',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, IonCard,
+  IonCardHeader, IonCardTitle, IonCardContent },
     data: () => ({
     pageName: 'Groups',
+    faculties: ["Business", "Comp Science", "English", "Accounting", "Law", "Science", "Civil Engineering", 
+    "Audio Engineering", "Air Service Training"]
   }),
   setup() {
     return {
@@ -45,5 +59,9 @@ ion-content{
   --offset-bottom: auto!important;
   --overflow: hidden;
   overflow: auto;
+}
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
 }
 </style>
