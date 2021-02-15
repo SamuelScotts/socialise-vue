@@ -1,5 +1,5 @@
 # Socialise
-Msc in Web Technologies - Mobile Applications Development (UI111012)
+Msc in Web Technologies - Mobile Applications Development (UI111012) - Project App
 
 Socialise - A student hangout app, built using Ionic and Vuejs.  Written in Typescript/Javascript.  Firebase on the backend for authentication and data persistence.
 
