@@ -1,5 +1,5 @@
 # Socialise
-Msc in Web Technologies - Mobile Applications Development (UI111012)
+Msc in Web Technologies - Mobile Applications Development (UI111012) - Project App
 
 Socialise - A student hangout app, built using Ionic and Vuejs.  Written in Typescript/Javascript.  Firebase on the backend for authentication and data persistence.
 
@@ -13,5 +13,5 @@ This is a project build for my Masters course in Web Technologies with the Unive
 - [x] Hardcode data initially to help structure each view.
 - [x] Add ability to get data from Firestore.
 - [x] Add ability to post data from Firestore.
-- [ ] Add user's ability to post comments.
-- [ ] Add display of username and comment/post creation times.
+- [x] Add user's ability to post comments.
+- [x] Add display of username and comment/post creation times.
