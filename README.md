@@ -19,18 +19,23 @@ This is a project build for my Masters course in Web Technologies.  The brief wa
 As mentioned above, this is still massively a work in progress, however see below for a few screenshots demonstrating its development so far:
 
 Main area - Stories:
+
 ![alt text](https://github.com/SamuelScotts/socialise-vue/blob/master/images/stories.png)
 
 Individual Story:
+
 ![alt text](https://github.com/SamuelScotts/socialise-vue/blob/master/images/story.png)
 
 Adding a Story:
+
 ![alt text](https://github.com/SamuelScotts/socialise-vue/blob/master/images/add.png)
 
 Login View:
+
 ![alt text](https://github.com/SamuelScotts/socialise-vue/blob/master/images/login.png)
 
 Registration View:
+
 ![alt text](https://github.com/SamuelScotts/socialise-vue/blob/master/images/register.png)
 
 
