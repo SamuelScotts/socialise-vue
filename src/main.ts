@@ -32,12 +32,12 @@ router.isReady().then(() => {
 });
 
 const firebaseConfig = {
-  apiKey: "BLANK INTENTIONALLY",
-  authDomain: "BLANK INTENTIONALLY",
-  projectId: "BLANK INTENTIONALLY",
-  storageBucket: "BLANK INTENTIONALLY",
-  messagingSenderId: "BLANK INTENTIONALLY",
-  appId: "BLANK INTENTIONALLY"
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_IT,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
