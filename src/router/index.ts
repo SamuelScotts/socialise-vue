@@ -22,51 +22,58 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '',
         redirect: 'stories',
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'stories',
         path: 'stories',
         component: () => import('@/views/Stories.vue'),
         props: true,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'groups',
         path: 'groups',
         component: () => import('@/views/Groups.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'add',
         path: 'add',
         component: () => import('@/views/Add.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'chat',
         path: 'chat',
         component: () => import('@/views/Chat.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'messages',
         path: 'messages',
         component: () => import('@/views/Messages.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'account',
         path: 'account',
         component: () => import('@/views/Account.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         name: 'story',
         path: 'story',
         component: () => import('@/views/Story.vue'),
         props: true,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
+      },
+      {
+        name: 'profile',
+        path: 'profile',
+        component: () => import('@/views/Profile.vue'),
+        props: true,
+        meta: { requiresAuth: false }
       },
     ]
   }

@@ -6,7 +6,7 @@
           <ion-icon :icon="closeOutline" />
         </ion-button>
         <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{pageName}}</ion-title>
-        <ion-button slot="end" color="black" @click="$router.push('/stories'), addStory()">
+        <ion-button slot="end" color="black" @click="$router.push('/stories'), getTimestamp(), addStory()">
           <ion-icon :icon="checkmarkOutline" />
         </ion-button>
       </ion-toolbar>
@@ -63,6 +63,7 @@ export default  {
     subtitle: '',
     content:'',
     currentUser: null,
+    timestamp: null,
   }),
   setup() {
     return {
@@ -79,10 +80,14 @@ export default  {
       content: this.content,
       likes: 0,
       user: this.currentUser,
+      timestamp: this.timestamp,
       })
       .catch((error) => {
           console.error("Error adding document: ", error);
       });
+    },
+    getTimestamp(){
+      this.timestamp = Date.now()
     }
   },
   ionViewDidEnter(){

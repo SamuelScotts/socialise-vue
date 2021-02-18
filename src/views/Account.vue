@@ -6,8 +6,8 @@
           <ion-icon :icon="chevronBack" />
         </ion-button>
         <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{pageName}}</ion-title>
-        <ion-button slot="end" color="black">
-          <ion-icon disabled="true"/>
+        <ion-button slot="end" color="black" @click="$router.push('/account')">
+          <ion-icon :icon="person" />
         </ion-button>
       </ion-toolbar>
     </ion-header>
@@ -29,7 +29,7 @@
 <script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonGrid,
 IonCol, IonRow } from '@ionic/vue';
-import { chevronBack, personOutline } from 'ionicons/icons';
+import { chevronBack, personOutline, person } from 'ionicons/icons';
 import router from '../router/index';
 import firebase from "firebase";
 import { db } from '../main';
@@ -45,7 +45,8 @@ export default  {
   setup() {
     return {
       chevronBack,
-      personOutline
+      personOutline,
+      person
     }
   },  
   methods: {

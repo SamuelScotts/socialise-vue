@@ -1,5 +1,6 @@
 <template>
   <ion-page>
+
     <ion-header>
       <ion-toolbar color="#642A5A">
         <ion-button slot="start">
@@ -11,15 +12,18 @@
         </ion-button>
       </ion-toolbar>
     </ion-header>
+
     <ion-content>
         <div class="body">
-            
             <h3 class="ion-text-center" style="font-size: 30px; color: black;">Welcome to</h3>
             <ion-item-divider style="width: 100%; text-align: center;"></ion-item-divider>
             <h1 class="ion-text-center" style="font-size: 50px; color: black; margin-top: -2px">Socialise</h1>
             
+            <!-- Input field for user to add a username  Obtained using v-model. -->
             <ion-input type="text" v-model="username" class="box" color="light" placeholder="Choose a username." clearInput="true"></ion-input>
             <p></p>
+
+            <!-- A selector, for the user to determine which faculty they are associated too. -->
             <ion-item>
             <ion-label>What faculty?</ion-label>
             <ion-select v-model="faculty" required="true" placeholder="">
@@ -34,15 +38,21 @@
                 <ion-select-option>English</ion-select-option>
             </ion-select>
             </ion-item>
+            
             <p></p>
+            <!-- Input field for user to supply their email address.  Obtained using v-model. -->
             <ion-input type="text" v-model="email" class="box" color="light" placeholder="Enter your email address." clearInput="true"></ion-input>
             <p></p>
+            <!-- Input field for user to supply their password.  Obtained using v-model. -->
             <ion-input type="password" min="6" v-model="password" class="box" color="light" placeholder="Choose a password." clearInput="true"></ion-input>
+           
             <p v-if="passInfo" class="ion-text-end" id="passInfo">Your password must contain at least 8 characters</p>
             <p v-else></p>
+            <!-- Submits registration form and performs validation at same time. -->
             <ion-button @click="checkPassLength()" class="button" expand="block">Register</ion-button>
-            <p class="ion-text-center" style="color: black;">Already have an account? <router-link to="/login">Login here!</router-link></p>
 
+            <!-- Directs to login page, should user already have an account. -->
+            <p class="ion-text-center" style="color: black;">Already have an account? <router-link to="/login">Login here!</router-link></p>
         </div>
     </ion-content>
   </ion-page>
@@ -74,6 +84,8 @@ export default  {
     }
   }, 
   methods: {
+    // A method to create a new user, based upon the info they've supplied, and stor with Firebase Auth.  
+    // Thereafter directs to 'stories' view.
     userSignup(){
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then((userCredential) => {
@@ -85,6 +97,7 @@ export default  {
             this.$router.push('/stories')
           })
     },
+    // Performs minor validation on password length, as Firebase Auth requires a password > 6 characters.
     checkPassLength(){
         if (this.password.length < 6){
             this.passInfo = true;

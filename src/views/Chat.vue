@@ -6,8 +6,8 @@
           <ion-icon :icon="chevronBack" />
         </ion-button>
         <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{pageName}}</ion-title>
-        <ion-button slot="end" color="black">
-          <ion-icon disabled="true"/>
+        <ion-button slot="end" color="black" @click="$router.push('/account')">
+          <ion-icon :icon="person" />
         </ion-button>
       </ion-toolbar>
     </ion-header>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon } from '@ionic/vue';
-import { chevronBack } from 'ionicons/icons';
+import { chevronBack, person } from 'ionicons/icons';
 import router from '../router/index';
 
 export default  {
@@ -30,7 +30,8 @@ export default  {
   }),
   setup() {
     return {
-      chevronBack
+      chevronBack,
+      person
     }
   },  
   methods: {
@@ -45,5 +46,8 @@ ion-content{
   --offset-bottom: auto!important;
   --overflow: hidden;
   overflow: auto;
+}
+ion-button{
+  --box-shadow:none;
 }
 </style>
