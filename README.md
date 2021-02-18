@@ -12,9 +12,16 @@ This is a project build for my Masters course in Web Technologies.  The brief wa
 - [ ] Structure each view fully.
 - [x] Hardcode data initially to help structure each view.
 - [x] Add ability to get data from Firestore.
-- [x] Add ability to post data from Firestore.
+- [x] Add ability to post data to Firestore.
 - [x] Add user's ability to post comments.
-- [x] Add display of username and comment/post creation times.
+- [ ] Add display of username and comment/post creation times.
+
+To quickly start the project and run in a web browser:
+
+`````
+cd socialise-vue
+ionic serve
+`````
 
 As mentioned above, this is still massively a work in progress, however see below for a few screenshots demonstrating its development so far:
 
