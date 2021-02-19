@@ -24,7 +24,7 @@
             <p></p>
 
             <!-- A selector, for the user to determine which faculty they are associated too. -->
-            <ion-item>
+            <ion-item lines="none">
             <ion-label>What faculty?</ion-label>
             <ion-select v-model="faculty" required="true" placeholder="">
                 <ion-select-option>Business</ion-select-option>
@@ -148,8 +148,16 @@ ion-input{
 }
 ion-select{
   --box-shadow:none;
-  --placeholder-color: black;
   padding-left:9px;
+}
+ion-item{
+  --background: white;
+  --border-color: #403E39;
+  --border-width: thin;
+  --border-style: solid;
+  --border-radius: 3px;
+  --color: #92949c;
+  --padding-start: 9px;
 }
 #passInfo{
     font-size: 11px;

@@ -21,11 +21,10 @@
             <ion-input type="text" v-model="username" class="box" color="light" placeholder="Email" clearInput="true"></ion-input>
             <p></p>
             
-            <ion-input type="password" v-model="password" class="box" color="light" placeholder="Password" clearInput="true"></ion-input>
-            <p class="ion-text-center" style="color: black;">Forgotten your password? <router-link to="/password">Click here!</router-link></p>
-            
-            <ion-button @click="userLogin()" class="button" expand="block">Login</ion-button>
-            <p class="ion-text-center" style="color: black;">Don't have an account? <router-link to="/register">Register here!</router-link></p>
+            <ion-button @click="resetPassword()" class="button" expand="block">Reset Password</ion-button>
+
+            <!-- Directs to login page, should user already have an account. -->
+            <p class="ion-text-center" style="color: black;">Don't need a password reset? <router-link to="/login">Login here!</router-link></p>
 
         </div>
     </ion-content>
@@ -41,13 +40,12 @@ import firebase from "firebase";
 import auth from '../main';
 
 export default  {
-  name: 'login',
+  name: 'password',
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, 
   IonItemDivider, IonInput },
     data: () => ({
-    pageName: 'Login',
+    pageName: 'Reset',
     username: '',
-    password: '',
   }),
   setup() {
     return {
@@ -55,20 +53,13 @@ export default  {
     }
   }, 
   methods: {
-    userLogin() {
-        firebase
-        .auth()
-        .signInWithEmailAndPassword(this.username, this.password)
-        .then(() => {
-            this.$router.push('/stories');
-            this.username = '';
-            this.password = '';
-        })
-        .catch((error) => {
-          alert(error.message);
+    resetPassword(){
+        auth.sendPasswordResetEmail(this.username).then(function() {
+        alert("Email sent!")
+        }).catch(function(error) {
+        // An error happened.
         });
-    },
-    
+    }
   }
 }
 </script>

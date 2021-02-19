@@ -16,64 +16,69 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Register.vue')
   },
   {
+    name: 'password',
+    path: '/password',
+    component: () => import('@/views/Password.vue'),
+  },
+  {
     path: '/',
     component: Tabs,
     children: [
       {
         path: '',
         redirect: 'stories',
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'stories',
         path: 'stories',
         component: () => import('@/views/Stories.vue'),
         props: true,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'groups',
         path: 'groups',
         component: () => import('@/views/Groups.vue'),
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'add',
         path: 'add',
         component: () => import('@/views/Add.vue'),
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'chat',
         path: 'chat',
         component: () => import('@/views/Chat.vue'),
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'messages',
         path: 'messages',
         component: () => import('@/views/Messages.vue'),
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'account',
         path: 'account',
         component: () => import('@/views/Account.vue'),
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'story',
         path: 'story',
         component: () => import('@/views/Story.vue'),
         props: true,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
       {
         name: 'profile',
         path: 'profile',
         component: () => import('@/views/Profile.vue'),
         props: true,
-        meta: { requiresAuth: false }
+        meta: { requiresAuth: true }
       },
     ]
   }
