@@ -20,8 +20,8 @@
           <ion-icon :icon="chatbox" />
         </ion-button>
 
-        <ion-button size="large" color="black" @click="$router.push('/messages')">
-          <ion-icon :icon="mail" />
+        <ion-button size="large" color="black" @click="$router.push('/notifications')">
+          <ion-badge v-if="notifications >= 1" style="margin-left: -15px; margin-top: -20px;" color="danger" slot="end">{{notifications}}</ion-badge><ion-icon :icon="notificationsOutline" />
         </ion-button>
 
       </ion-tab-bar>
@@ -30,19 +30,22 @@
 </template>
 
 <script lang="ts">
-import { IonTabBar, IonButton, IonTabs, IonIcon, IonPage } from '@ionic/vue';
-import { home, people, add, chatbox, mail } from 'ionicons/icons';
+import { IonTabBar, IonButton, IonTabs, IonIcon, IonPage, IonBadge } from '@ionic/vue';
+import { home, people, add, chatbox, notificationsOutline } from 'ionicons/icons';
 
 export default {
   name: 'Tabs',
-  components: { IonTabs, IonTabBar, IonButton, IonIcon, IonPage },
+  components: { IonTabs, IonTabBar, IonButton, IonIcon, IonPage, IonBadge },
+  data: () => ({
+    notifications: 0,
+  }),
   setup() {
     return {
       home,
       people,
       add,
       chatbox,
-      mail
+      notificationsOutline
     }
   }
 }

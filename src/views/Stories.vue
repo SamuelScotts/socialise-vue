@@ -47,7 +47,7 @@
               <div>{{ story.subtitle }}</div>
               <ion-item-divider></ion-item-divider>
               <ion-icon :icon="handLeftOutline" style="font-size: 22px;" /> {{ story.likes }} appreciations
-              <ion-icon :icon="chatbubbleEllipsesOutline" style="font-size: 22px; margin-left: 10px;" /> 0 comments
+              <ion-icon :icon="chatbubbleEllipsesOutline" style="font-size: 22px; margin-left: 10px;" /> {{story.comments}} comments
             </ion-card-content>
           </div>
         </ion-card>
@@ -88,6 +88,7 @@ export default  {
     preventDefault(event){
       event.stopPropagation()
     },
+    // Deletes story, but can only be done by relevant user who posted same.
     deleteStory(storyId){
       db.collection("stories").doc(storyId).delete().then(() => {
           this.getStories();
@@ -95,6 +96,7 @@ export default  {
           console.error("Error removing document: ", error);
       });
     },
+    // Gets signed in users information
     getCurrentUser(){
       // Get current user from Fiebase Authentication when the view opens.
       const user = firebase.auth().currentUser;

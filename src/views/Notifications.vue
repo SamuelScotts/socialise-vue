@@ -23,10 +23,10 @@ import { chevronBack, person } from 'ionicons/icons';
 import router from '../router/index';
 
 export default  {
-  name: 'messages',
+  name: 'notifications',
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon },
     data: () => ({
-    pageName: 'Messages',
+    pageName: 'Notifications',
   }),
   setup() {
     return {

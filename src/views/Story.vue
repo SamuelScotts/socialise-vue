@@ -104,6 +104,7 @@ export default  {
       .catch((error) => {
           console.error("Error adding document: ", error);
       });
+      db.collection("stories")
     },
     // A method that can be called to obtain latest comments from Firebase.
     refreshComments(){
