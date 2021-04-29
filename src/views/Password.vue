@@ -55,7 +55,7 @@ export default  {
     }
   }, 
   methods: {
-    // Method which sents reset email link to email used during registration.
+    // Method which sends reset email link to email used during registration.
     resetPassword(){
         auth.sendPasswordResetEmail(this.username).then(function() {
         alert("Email sent!")
