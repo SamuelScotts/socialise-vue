@@ -3,9 +3,10 @@
     <!-- View title & account view link -->
     <ion-header>
       <ion-toolbar>
-        <ion-button slot="start" color="black" disabled="true">
+        <ion-button slot="start" color="black" @click="$router.push('/groups')">
+          <ion-icon :icon="chevronBack" />
         </ion-button>
-            <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{pageName}}</ion-title>
+            <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{$route.params.faculty}}</ion-title>
         <!-- Navigate to account view on click of icon. -->
         <ion-button slot="end" color="black" @click="$router.push('/account')">
           <ion-icon :icon="person" />
@@ -14,6 +15,11 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
+
+        <!-- If no stories relevant to that faculty to show, display content below -->
+        <ion-item v-if="noStories" color="#642A5A" lines="none">
+          <ion-label style="font-size: 20px;">There are no stories in this faculty :(</ion-label>
+        </ion-item>
 
         <!-- Display all stories from stories array, by means of v-for loop.  Push props to 'story' view on click of anywhere on card. -->
         <ion-card v-for="story, index in stories" :key="index">
@@ -56,22 +62,24 @@
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonLabel, IonItem, 
 IonCard, IonCardHeader, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent, IonCardTitle } from '@ionic/vue';
-import { person, handLeftOutline, chatbubbleEllipsesOutline, trashOutline } from 'ionicons/icons';
+import { person, handLeftOutline, chatbubbleEllipsesOutline, trashOutline, chevronBack } from 'ionicons/icons';
 import firebase from 'firebase';
 // import Firestore from main.ts file.
 import { db } from '../main';
 
 export default  {
-  name: 'stories',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon,
+  name: 'group',
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, IonLabel, IonItem,
   IonCard, IonCardHeader, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent, IonCardTitle,
   },
   data: () => ({
-    pageName: 'Stories',
+    pageName: 'Group',
     // Set empty array to hold all stories.
     stories: [],
+    // To determines if section displayed in render.
+    noStories: null,
     // Set current user to null.  Variable set when view is opened.
     currentUser: '',
   }),
@@ -82,6 +90,7 @@ export default  {
       handLeftOutline,
       chatbubbleEllipsesOutline,
       trashOutline,
+      chevronBack
     }
   },
   methods:{
@@ -125,7 +134,16 @@ export default  {
           } else {
             stories.trash = false;
           }
-          this.stories.push(stories);
+          // Filter stories entering stories array to display those only
+          // relevant to the selected faculty.
+          if (stories.faculty === this.$route.params.faculty){
+            this.stories.push(stories);
+          }
+          if (this.stories.length > 0){
+            this.noStories = false;
+          } else {
+            this.noStories = true;
+          }
         });
       })
     },
@@ -148,6 +166,10 @@ export default  {
   ionViewWillEnter(){
     this.getCurrentUser(),
     this.getStories()
+  },
+  // Method which runs on view closing, reseting noStories variable to false.
+  ionViewWillLeave(){
+    this.noStories = false;
   }
 }
 </script>

@@ -76,14 +76,20 @@ export default  {
   IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonInput,
   IonLabel },
   data: () => ({
+    // Set page name.
     pageName: 'Story',
+    // Set empty array to hold all comments.
     comments: [],
+    // Variable to temporarily hold comment.
     comment: '',
+    // Set current user to null.  Variable set when view is opened.
     currentUser: null,
+    // Truthy / Falsey variable for determining whether to display comments or 'No comments', depending on number posted.
     noComments: null,
   }),
   setup() {
     return {
+      // Icon image references.
       chevronBack,
       person
     }
@@ -99,12 +105,20 @@ export default  {
       .then(() => {
           // Run refresh comments method, to obtain most up to date comment set from Firebase.
           this.refreshComments();
+          // Run increment comment count method, to increase comment count.
+          this.incrementCommentCount();
           this.comment = '';
       })
       .catch((error) => {
           console.error("Error adding document: ", error);
       });
       db.collection("stories")
+    },
+    // Increment the comment field in Firestore by one.
+    incrementCommentCount(){
+      db.collection("stories").doc(this.$route.params.id).update({ 
+          comments: firebase.firestore.FieldValue.increment(1) 
+      })
     },
     // A method that can be called to obtain latest comments from Firebase.
     refreshComments(){
@@ -171,6 +185,7 @@ ion-item{
   box-shadow:none;
   margin-left: -2px;
 }
+/* Remove scroll bar across app */
 ::-webkit-scrollbar,
 *::-webkit-scrollbar {
   display: none;

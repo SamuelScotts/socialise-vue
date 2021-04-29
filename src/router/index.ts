@@ -43,6 +43,12 @@ const routes: Array<RouteRecordRaw> = [
         meta: { requiresAuth: true }
       },
       {
+        name: 'group',
+        path: 'group',
+        component: () => import('@/views/Group.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
         name: 'add',
         path: 'add',
         component: () => import('@/views/Add.vue'),

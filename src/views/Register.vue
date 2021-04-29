@@ -1,13 +1,15 @@
 <template>
   <ion-page>
-
+    <!-- View title -->
     <ion-header>
       <ion-toolbar color="#642A5A">
-        <ion-button slot="start">
+        <!-- Deactivated button added here as spacer -->
+        <ion-button slot="start" disabled>
           <ion-icon disabled="true"/>
         </ion-button>
         <ion-title style="margin-top:3px; font-size: 30px" class="ion-text-center">{{pageName}}</ion-title>
-        <ion-button slot="end">
+        <!-- Deactivated button added here as spacer -->
+        <ion-button slot="end" disabled>
           <ion-icon disabled="true"/>
         </ion-button>
       </ion-toolbar>

@@ -1,3 +1,16 @@
+<!-- ******************************************************
+*
+**
+***
+- PAGE NOT BUILT YET.  VERY BASIC LAYOUT ADDED.
+- TO HOLD RELEVANT USERS PUBLIC PROFILE INFORMATION.
+- ACCESSABLE BY CLICKING ON USERS USERNAME.
+- NO COMMENTS ADDED DUE TO ABOVE.
+***
+**
+*
+******************************************************* -->
+
 <template>
   <ion-page>
     <ion-header>

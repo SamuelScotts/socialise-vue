@@ -14,14 +14,16 @@
     
     <ion-content>
       <ion-card id="comment" v-for="faculty in faculties" :key="faculty">
-        <ion-card-header>
-          <ion-card-title>
-            {{faculty}}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            Get the latest information from the {{faculty}} department.
-        </ion-card-content>
+        <div @click="$router.push({name:'group', params: {faculty: faculty}})">
+          <ion-card-header>
+            <ion-card-title>
+              {{faculty}}
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              Get the latest information from the {{faculty}} department.
+          </ion-card-content>
+        </div>
       </ion-card>
     </ion-content>
   </ion-page>
@@ -39,7 +41,7 @@ export default  {
   IonCardHeader, IonCardTitle, IonCardContent },
     data: () => ({
     pageName: 'Groups',
-    faculties: ["Business", "Comp Science", "English", "Accounting", "Law", "Science", "Civil Engineering", 
+    faculties: ["Business", "Computer Science", "English", "Accounting", "Law", "Science", "Civil Engineering", 
     "Audio Engineering", "Air Service Training"]
   }),
   setup() {

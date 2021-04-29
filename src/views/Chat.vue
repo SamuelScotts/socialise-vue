@@ -1,3 +1,16 @@
+<!-- ******************************************************
+*
+**
+***
+- PAGE NOT BUILT YET.  VERY BASIC LAYOUT ADDED.
+- TO HOLD USERS CONVERSTIONS WITH OTHER USERS.
+- WAS TO WORK LIKE INSTANT MESSANGE. NOT YET IMPLEMENTED.
+- NO COMMENTS ADDED DUE TO ABOVE.
+***
+**
+*
+******************************************************* -->
+
 <template>
   <ion-page>
     <ion-header>

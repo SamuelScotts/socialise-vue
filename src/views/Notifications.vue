@@ -1,3 +1,16 @@
+<!-- ******************************************************
+*
+**
+***
+- PAGE NOT BUILT YET.  VERY BASIC LAYOUT ADDED.
+- TO NOTIFICATIONS THAT HAVE OCCURRED FROM OTHER USERS
+- NOTIFICATIONS COME FROM USER COMMENTS NOT YET IMPLEMENTED.
+- NO COMMENTS ADDED DUE TO ABOVE.
+***
+**
+*
+******************************************************* -->
+
 <template>
   <ion-page>
     <ion-header>
